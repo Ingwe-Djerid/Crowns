@@ -1,0 +1,80 @@
+/*game start*/
+
+/*
+game setup
+*/
+
+players to each corner
+
+obstacles, 8 patterns selected from randomly, or chosen first.
+
+
+/*cycling players main game loop*/
+
+for every player
+  while the player has not moved a piece
+    after they click a piece
+      if the piece is theirs
+        stop displaying any current movement options
+        determine the movement options of clicked piece
+        set clicked piece to the selected piece
+        display movement options
+      end
+    end
+    if they click an empty square
+      stop displaying any current movement options
+      clear movement options
+    end
+    if they click a movement option
+      lockout current player
+      move selected piece to movement option
+      stop displaying any current movement options
+      clear movement options
+
+      !movePieceEvent!
+
+    end
+  end
+end
+
+/*!movePieceEvent!*/
+
+if square was empty and not throne
+  move piece to square, set to next players turn
+  unlock current player
+else
+  if square was not empty
+  kill occupying piece
+  move piece to square, set to next players turn
+  unlock current player
+  end
+  if square was throne
+    if selected piece was knight
+      if first time on throne
+        highlight unoccupied obstacles
+        indicate one has to be selected for movement
+        wait until one is selected
+
+        highlight all unoccupied squares
+        indicate once is to be selected
+
+        highlight all pieces current player controls(bar king)
+        indicate one is to be selected to occupy moved obstacle
+        wait until one is selected
+
+        move piece to occupy obstacle
+
+        highlight all opposing, non king pieces
+        indicate one has to die
+        wait until one is selected
+
+        kill selected piece
+      end
+    end
+    if selected piece was King
+      end game,
+      current player set to victor
+      play victory screen
+    end
+  end
+end
